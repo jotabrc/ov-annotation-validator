@@ -27,7 +27,7 @@ public class GlobalValidator implements ConstraintValidator<ValidateField, Strin
         switch (fieldName) {
             case "text255" -> {
                 this.pattern = validationConfig.getText255Pattern();
-                this.pattern = validationConfig.getText255Message();
+                this.errorMessage = validationConfig.getText255Message();
             }
             case "text50" -> {
                 this.pattern = validationConfig.getText50Pattern();
