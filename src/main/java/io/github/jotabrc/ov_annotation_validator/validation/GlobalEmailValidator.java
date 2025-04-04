@@ -1,6 +1,6 @@
 package io.github.jotabrc.ov_annotation_validator.validation;
 
-import io.github.jotabrc.ov_annotation_validator.annotation.ValidateField;
+import io.github.jotabrc.ov_annotation_validator.annotation.ValidateEmail;
 import io.github.jotabrc.ov_annotation_validator.config.ValidationConfig;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * Global email validation using Apache Commons Validator.
  */
 @Component
-public class GlobalEmailValidator implements ConstraintValidator<ValidateField, String> {
+public class GlobalEmailValidator implements ConstraintValidator<ValidateEmail, String> {
 
     @Autowired
     private ValidationConfig validationConfig;
@@ -23,7 +23,7 @@ public class GlobalEmailValidator implements ConstraintValidator<ValidateField, 
     private String errorMessage;
 
     @Override
-    public void initialize(ValidateField constraintAnnotation) {
+    public void initialize(ValidateEmail constraintAnnotation) {
         this.errorMessage = validationConfig.getDescriptionMessage();
     }
 
