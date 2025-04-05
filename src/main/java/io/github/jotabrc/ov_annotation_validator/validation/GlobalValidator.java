@@ -25,6 +25,10 @@ public class GlobalValidator implements ConstraintValidator<ValidateField, Strin
     public void initialize(ValidateField constraintAnnotation) {
         String fieldName = constraintAnnotation.fieldName();
         switch (fieldName) {
+            case "name" -> {
+                this.pattern = validationConfig.getNamePattern();
+                this.errorMessage = validationConfig.getNameMessage();
+            }
             case "text255" -> {
                 this.pattern = validationConfig.getText255Pattern();
                 this.errorMessage = validationConfig.getText255Message();
@@ -48,6 +52,10 @@ public class GlobalValidator implements ConstraintValidator<ValidateField, Strin
             case "description" -> {
                 this.pattern = validationConfig.getDescriptionPattern();
                 this.errorMessage = validationConfig.getDescriptionMessage();
+            }
+            case "uuid" -> {
+                this.pattern = validationConfig.getUuidPattern();
+                this.errorMessage = validationConfig.getUuidMessage();
             }
             default -> throw new IllegalArgumentException("Unsupported field " + fieldName);
         }

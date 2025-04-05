@@ -16,6 +16,9 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:validation.properties")
 public class ValidationConfig {
 
+    private String namePattern;
+    private String nameMessage;
+
     private String text255Pattern;
     private String text255Message;
 
@@ -33,4 +36,7 @@ public class ValidationConfig {
 
     private String descriptionPattern;
     private String descriptionMessage;
+
+    private String uuidPattern;
+    private String uuidMessage;
 }
