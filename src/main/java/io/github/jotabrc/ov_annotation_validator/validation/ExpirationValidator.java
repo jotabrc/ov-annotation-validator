@@ -27,7 +27,7 @@ public class ExpirationValidator implements ConstraintValidator<ValidateExpirati
     @Override
     public boolean isValid(@NotNull @NotBlank LocalDateTime expiration, ConstraintValidatorContext constraintValidatorContext) {
 
-        if (LocalDateTime.now().minusDays(expirationDays).isBefore(expiration)) {
+        if (LocalDateTime.now().minusDays(expirationDays).isAfter(expiration)) {
             constraintValidatorContext.disableDefaultConstraintViolation();
             constraintValidatorContext.buildConstraintViolationWithTemplate(errorMessage)
                     .addConstraintViolation();
