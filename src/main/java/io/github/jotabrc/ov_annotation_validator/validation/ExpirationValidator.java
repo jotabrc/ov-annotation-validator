@@ -15,19 +15,19 @@ import java.time.LocalDateTime;
 @Component
 public class ExpirationValidator implements ConstraintValidator<ValidateExpiration, LocalDateTime> {
 
-    private int expirationDays;
+    private int expirationHours;
     private String errorMessage;
 
     @Override
     public void initialize(ValidateExpiration constraintAnnotation) {
-        expirationDays = constraintAnnotation.expirationDays();
+        expirationHours = constraintAnnotation.expirationHours();
         errorMessage = constraintAnnotation.message();
     }
 
     @Override
     public boolean isValid(@NotNull @NotBlank LocalDateTime expiration, ConstraintValidatorContext constraintValidatorContext) {
 
-        if (LocalDateTime.now().minusDays(expirationDays).isAfter(expiration)) {
+        if (LocalDateTime.now().minusHours(expirationHours).isAfter(expiration)) {
             constraintValidatorContext.disableDefaultConstraintViolation();
             constraintValidatorContext.buildConstraintViolationWithTemplate(errorMessage)
                     .addConstraintViolation();

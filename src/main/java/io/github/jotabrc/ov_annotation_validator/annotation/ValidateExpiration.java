@@ -20,5 +20,5 @@ public @interface ValidateExpiration {
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
     String fieldName();
-    int expirationDays();
+    int expirationHours();
 }
