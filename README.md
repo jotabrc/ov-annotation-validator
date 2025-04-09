@@ -1,5 +1,38 @@
 # Annotation Validator
-Validates field in object and parameters using `@ValidateField(fieldName = "fieldName", message = "message"`, or, `@ValidateEmail`.
+Validates field in object and parameters using annotations.
+
+### Validation
+- fields: `@ValidateField(fieldName = "fieldName", message = "message")`
+- emails: `@ValidateEmail(message = "Invalid Email")`
+- expiration: `@ValidateExpiration(fieldName = "expiration", expirationHours = 1, message = "Token expired")`
 
 ### Pattern and Messages
-Pattern and Messages are configurable using the `validation.properties` file.
+Pattern and Messages are configurable using the `validation.properties` file. Email validation uses Apache `commons-validator`.
+
+```properties
+validation.namePattern=^[A-Za-z\\s\\p{Punct}0-9]{1,255}$
+validation.nameMessage=Name is invalid
+
+validation.text255Pattern=^[A-Za-z\\s\\p{Punct}0-9]{1,255}$
+validation.text255Message=Input is invalid
+
+validation.text50Pattern=^[A-Za-z\\s\\p{Punct}0-9]{1,50}$
+validation.text50Message=Input is invalid
+
+validation.passwordPattern=^[A-Za-z0-9!@#$%^&*()_+\\-={}\\[\\]:;\"'<>,.?/|\\\\]{8,50}$
+validation.passwordMessage=Password is invalid
+
+validation.phonePattern=\\+\\d{6,14}
+validation.phoneMessage=Phone is invalid
+
+validation.usernamePattern=^[a-zA-Z0-9@_-]{8,50}$
+validation.usernameMessage=Username is invalid
+
+validation.descriptionPattern=^[a-zA-Z\\s\\p{Punct}0-9\n]{0,510}$
+validation.descriptionMessage=Description is invalid
+
+validation.emailMessage=Email is invalid
+
+validation.uuidPattern=[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}
+validation.uuidMessage=UUID is invalid
+```

@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 /**
- * GlobalValidator for common fields.
+ * Check LocalDateTime expiration using hours in annotated fields.
+ * Such as: @ValidateExpiration(fieldName = "expiration", expirationHours = 1, message = "Token expired")
  */
 @Component
 public class ExpirationValidator implements ConstraintValidator<ValidateExpiration, LocalDateTime> {

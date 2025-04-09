@@ -10,7 +10,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotation for LocalDateTime fields.
+ * Annotation for LocalDateTime fields validation.
+ * Required fields are expirationHours.
  */
 @Constraint(validatedBy = ExpirationValidator.class)
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
