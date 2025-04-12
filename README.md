@@ -1,5 +1,5 @@
 # Annotation Validator
-Validates field in object and parameters using annotations.
+Validates fields and parameters using annotations.
 
 ### Validation
 - fields: `@ValidateField(fieldName = "fieldName", message = "message")`
